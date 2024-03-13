@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block header %}
+      <title>SRC</title>
+    {% endblock %}
+  </head>
+  <body>
+    <div id="bg" style="background-image: url({{ cover_photo }});"></div>
+    <div class="navbar" >
+        <div class="subnavbar">
+            <a href="/" class="navbarlinks">Contact</a>
+            <a onclick="openLoginPage()" class="navbarlinks">Login</a>
+            <a href="/" class="navbarlinks">Socials</a>
+            <div class="centerer">
+              <div id="login">
+              <p class="loginsignuptext">Email</p>
+              <input type="email">
+              <p class="loginsignuptext">Password</p>
+              <input type="password"><br><br><br>
+              <div class="centerer"><button class="login">Login</button></div>
+              <div class="centerer"><p>Don't Have An Account? <a style="text-decoration: underline;" onclick="openSignupPage()">Sign Up</a></p></div>
+            </div>
+            <div id="signup">
+              <p class="loginsignuptext">Email</p>
+              <input type="email">
+              <p class="loginsignuptext">Full Name</p>
+              <input type="text">
+              <p class="loginsignuptext">Password</p>
+              <input type="password">
+              <br><br><br><br><br>
+              <div class="centerer"><button class="login">Sign Up</button></div>
+              <br>
+              <div class="centerer"><p>Already Have An Account? <a style="text-decoration: underline;" onclick="openSignupPage()">Login</a></p></div>
+            </div>
+          </div>
+        </div>
+        <div id="navbartoggle">
+          <img src="{% static "images/logo.svg" %}" style="cursor: pointer;" onclick="this.parentElement.children[1].click();">
+          <input hidden type="checkbox" id="navbartogglebox" onchange="toggleNavbar(this.checked)">
+        </div>
+        <div class="mask"></div>
+    </div>
+    <script src="{% static "scripts/index.js" %}"></script>
+    {% block content %}
+
+    {% endblock %}
+  </body>
+</html>

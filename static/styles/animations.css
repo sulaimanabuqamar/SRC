@@ -1,0 +1,51 @@
+@keyframes showNavbar {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+@keyframes hideNavbar {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+@keyframes dissolve {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%;
+    }
+}
+@keyframes reappear {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+@keyframes showMenubar {
+    from {
+        transform: translateY(-80px);
+    }
+
+    to {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes hideMenubar {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-80px);
+    }
+}

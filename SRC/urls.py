@@ -21,8 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-]
-urlpatterns += [
-    path('website/', include('website.urls')),
+    path('', include('website.urls')),
+    
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static("uploadedMedia/", document_root="uploadedMedia/")

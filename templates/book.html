@@ -1,0 +1,88 @@
+{% load static %}
+{% block header %}
+    <meta charset="UTF-8" />
+    <title>Home | SRC</title>
+    <link rel="stylesheet" href="{% static "styles/fonts.css" %}">
+    <link rel="stylesheet" href="{% static "styles/bookstyle.css" %}">
+    <link rel="stylesheet" href="{% static "styles/animations.css" %}">
+{% endblock header %}
+{% block content %}
+<button class="pageturner">
+    <img src="{% static "images/back.svg" %}">
+</button>
+<button class="pageturner opposite">
+    <img src="{% static "images/forward.svg" %}">
+</button>
+<div id="menubar">
+    <div class="menubar left">
+        <span class="menubar text">{{ pages.0.Title_Text }}</span>
+    </div>
+    <div class="menubar right">
+        <select>
+            {% for page in pages %}
+                {% if page.Category == "about" %}
+                    <option>Page {{ page.id }}: {{ page.Title_Text }}</option>
+                {% endif %}
+            {% endfor %}
+            <option disabled>Meet The Team</option>
+            {% for page in pages %}
+                {% if page.Category == "meet_team" %}
+                    <option>Page {{ page.id }}: {{ page.Title_Text }}</option>
+                {% endif %}
+            {% endfor %}
+            <option disabled>Meet The Researchers</option>
+            {% for page in pages %}
+                {% if page.Category == "meet_reasearch" %}
+                    <option>Page {{ page.id }}: {{ page.Title_Text }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <button class="imagebtn">
+            <img src= "{% static 'images/menubar back.svg' %}">
+        </button>
+        <button class="imagebtn">
+            <img src= "{% static 'images/menubar forward.svg' %}">
+        </button>
+        <a href="{% url "index" %}">
+            <button class="imagebtn">
+                <img src= "{% static 'images/close.svg' %}">
+            </button>
+        </a>
+    </div>
+    
+</div>
+<h1 class="title">Title</h1>
+<div class="page" id="pageleft" hidden></div>
+<div class="separator vertical"></div>
+<div class="page right" id="pageright" hidden></div>
+<p class="body" id="toc">
+    {% for page in pages %}
+        {% if page.Category == "about" %}
+            {{ page.Title_Text }} ................................................................................................................................................{{ page.id }}<br>
+        {% endif %}
+    {% endfor %}
+    
+<br>
+<span class="subtitle">Meet The Team .....................................................................................................................{{ first_meet_team_pagenum }}</span><br>
+{% for page in pages %}
+        {% if page.Category == "meet_team" %}
+            {{ page.Title_Text }} ................................................................................................................................................{{ page.id }}<br>
+        {% endif %}
+    {% endfor %}
+<br>
+<span class="subtitle">Meet The Researchers .........................................................................................................{{ first_meet_research_pagenum }}</span><br>
+{% for page in pages %}
+        {% if page.Category == "meet_reasearch" %}
+            {{ page.Title_Text }} ................................................................................................................................................{{ page.id }}<br>
+        {% endif %}
+    {% endfor %}
+<br>
+<span class="subtitle">Researches ...........................................................................................................................{{ first_research_pagenum }}</span><br>
+{% for page in pages %}
+        {% if page.Category == "researches" %}
+            {{ page.Title_Text }} ................................................................................................................................................{{ page.id }}<br>
+        {% endif %}
+    {% endfor %}
+</p>
+<script src={% static "scripts/bookmenu.js" %}></script>
+{% endblock content %}
