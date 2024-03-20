@@ -5,14 +5,23 @@
     {% block header %}
       <title>SRC</title>
     {% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-    <div id="bg" style="background-image: url({{ cover_photo }});"></div>
+    <div id="bg" style="background-image: url(/{{ cover_photo }});"></div>
     <div class="navbar" >
         <div class="subnavbar">
-            <a href="/" class="navbarlinks">Contact</a>
+          <div class="distributer" id="mainlinks">
+            <a href="{% url "contact" %}" class="navbarlinks" id="contactlink">Contact</a>
+            <a href="{% url "index" %}" class="navbarlinks" id="homelink" hidden>Home</a>
             <a onclick="openLoginPage()" class="navbarlinks">Login</a>
-            <a href="/" class="navbarlinks">Socials</a>
+            <a onclick="toggleSocials()" class="navbarlinks">Socials</a>
+          </div>
+          <div class="distributer" id="socials" style="display: none;">
+            {% for social in socials %}
+              <a href="{{ social.Social_Media_Link }}" class="fa {{ social.Social_Media }}"></a>
+            {% endfor %}
+          </div>
             <div class="centerer">
               <div id="login">
               <p class="loginsignuptext">Email</p>

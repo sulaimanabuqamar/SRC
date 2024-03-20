@@ -2,19 +2,34 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-from .models import HomePage, Page
+from .models import HomePage, Page, Social, Contact
 # Create your views here.
 def index(request):
     """View function for home page of site."""
     homePage = HomePage.objects.all()
+    socials = Social.objects.all()
     context = {
         'title_text': homePage[0].Title_Text,
         'subtitle_text': homePage[0].Subtitle_Text,
         'cover_photo': homePage[0].Cover_Photo,
+        'socials': socials
     }
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+def contact(request):
+    """View function for home page of site."""
+    homePage = HomePage.objects.all()
+    socials = Social.objects.all()
+    contacts = Contact.objects.all()
+    context = {
+        'socials': socials,
+        'contacts': contacts,
+        'cover_photo': homePage[0].Cover_Photo,
+    }
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, 'contact.html', context=context)
 
 def book(request):
     """View function for home page of site."""

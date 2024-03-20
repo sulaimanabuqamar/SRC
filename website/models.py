@@ -27,3 +27,28 @@ class Page(models.Model):
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
         return "Page"
+class Social(models.Model):
+    """A typical class defining a model, derived from the Model class."""
+    # Fields
+    id = models.AutoField(primary_key=True)
+    Social_Media = models.CharField(max_length=1000000, choices=[("fa-facebook","Facebook"), ("fa-youtube","Youtube"), ("fa-instagram","Instagram"), ("fa-twitter","Twitter"), ("fa-linkedin","Linkedin")], default="fa-instagram")
+    Social_Media_Link = models.CharField(max_length=2000, help_text='Link to social media profile')
+
+    # Methods
+    def __str__(self):
+        """String for representing the MyModelName object (in Admin site etc.)."""
+        return "Page"
+class Contact(models.Model):
+    """A typical class defining a model, derived from the Model class."""
+    # Fields
+    id = models.AutoField(primary_key=True)
+    Name = models.CharField(max_length=2000)
+    Email = models.EmailField(max_length=2000)
+    Phone_Number = models.CharField(max_length=20, help_text='Phone Number in this format: +971501234567 or type N/A if you don\'t want to show number')
+    Position = models.CharField(max_length=2000, choices=[("Head", "Head"),("Junior Head", "Junior Head")])
+    Picture = models.ImageField(max_length=2000, upload_to='uploadedMedia', default='/static/images/placeholder.webp')
+
+    # Methods
+    def __str__(self):
+        """String for representing the MyModelName object (in Admin site etc.)."""
+        return "Page"

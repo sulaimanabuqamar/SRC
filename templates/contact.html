@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block header %}
+    <meta charset="UTF-8" />
+    <title>Home | SRC</title>
+    <link rel="stylesheet" href="{% static "styles/fonts.css" %}">
+    <link rel="stylesheet" href="{% static "styles/index.css" %}">
+    <link rel="stylesheet" href="{% static "styles/animations.css" %}">
+    <script src="{% static "scripts/html2canvas.min.js" %}"></script>
+{% endblock header %}
+{% block content %}
+<h1 style="margin-bottom: 70px">Contact Us</h1>
+<div class="centerer">
+<div class="contact-container">
+    {% for contact in contacts %}
+    <table cellspacing=0 cellpadding=5>
+        <tr>
+            <td rowspan=4 class="image">
+                <img src="{{ contact.Picture }}" height=121 width=121>
+            </td>
+            <th>
+                {{ contact.Name }}
+            </th>
+        </tr>
+        <tr>
+            <td>
+                {{ contact.Position }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="mailto:{{ contact.Email }}" class="email">{{ contact.Email }}</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ contact.Phone_Number }}
+            </td>
+        </tr>
+    </table>
+    {% endfor %}
+</div>
+</div>
+<img src="{% static "images/AMIC logo 1.png" %}" id="amiclogo">
+{% endblock content %}
