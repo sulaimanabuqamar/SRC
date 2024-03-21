@@ -22,7 +22,7 @@ body {}
     z-index: 2;
     transform: translateX(100%);
     transition: height 0.7s ease-in-out 0s;
-    margin-top: 5%;
+    margin-top: 30px;
 }
 .distributer {
     width: 90%;

@@ -51,38 +51,40 @@
     </div>
     
 </div>
-<h1 class="title">Title</h1>
-<div class="page" id="pageleft" hidden></div>
-<div class="separator vertical"></div>
-<div class="page right" id="pageright" hidden></div>
-<p class="body" id="toc">
+<div class="page" id="pageleft">
+    <h1 class="title">Title</h1>
+    <p class="body" id="toc">
     {% for page in pages %}
         {% if page.Category == "about" %}
-            {{ page.Title_Text }} ................................................................................................................................................{{ page.id }}<br>
+            <span class="toclistitem">{{ page.Title_Text }} <span class="tocline"></span>{{ page.id }}</span><br>
         {% endif %}
     {% endfor %}
     
 <br>
-<span class="subtitle">Meet The Team .....................................................................................................................{{ first_meet_team_pagenum }}</span><br>
+<span class="subtitle toclistitem">Researches<span class="tocline"></span>{{ first_meet_team_pagenum }}</span><br>
 {% for page in pages %}
         {% if page.Category == "meet_team" %}
-            {{ page.Title_Text }} ................................................................................................................................................{{ page.id }}<br>
+            <span class="toclistitem">&nbsp;&nbsp;{{ page.Title_Text }} <span class="tocline"></span>{{ page.id }}</span><br>
         {% endif %}
     {% endfor %}
 <br>
-<span class="subtitle">Meet The Researchers .........................................................................................................{{ first_meet_research_pagenum }}</span><br>
+<span class="subtitle toclistitem">Meet The Researches<span class="tocline"></span>{{ first_meet_research_pagenum }}</span><br>
 {% for page in pages %}
         {% if page.Category == "meet_reasearch" %}
-            {{ page.Title_Text }} ................................................................................................................................................{{ page.id }}<br>
+            <span class="toclistitem">&nbsp;&nbsp;{{ page.Title_Text }} <span class="tocline"></span>{{ page.id }}</span><br>
         {% endif %}
     {% endfor %}
 <br>
-<span class="subtitle">Researches ...........................................................................................................................{{ first_research_pagenum }}</span><br>
+<span class="subtitle toclistitem">Researches<span class="tocline"></span>{{ first_research_pagenum }}</span><br>
 {% for page in pages %}
         {% if page.Category == "researches" %}
-            {{ page.Title_Text }} ................................................................................................................................................{{ page.id }}<br>
+            <span class="toclistitem">&nbsp;&nbsp;{{ page.Title_Text }} <span class="tocline"></span>{{ page.id }}</span><br>
         {% endif %}
     {% endfor %}
 </p>
+</div>
+<div class="separator vertical"></div>
+<div class="page right" id="pageright"></div>
+
 <script src={% static "scripts/bookmenu.js" %}></script>
 {% endblock content %}
